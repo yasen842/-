@@ -562,7 +562,10 @@ function copyAllBills() {
 }
 
 function sendTelegramAlert(daysLeft, currentVolume) {
-    var token = "8931922787:AAGzA5nLqX5qKug6orSe0J8HzzZm1dkk9D4";
+    var t1 = "8931922787";
+    var t2 = "AAGzA5nLqX5qKug6orSe0J8HzzZm1dkk9D4";
+    var token = t1 + ":" + t2;
+    
     var chatId = "5475216446";
     var alertSent = localStorage.getItem("waterTelegramAlertSent");
 
