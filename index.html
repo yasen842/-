@@ -1,704 +1,596 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yaseen Mazaraq | Portfolio</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --bg: #181513;
-      --card-bg: #231f1c;
-      --card-bg-light: #2c2723;
-      
-      --accent-blue: #3b82f6;
-      --accent-blue-light: #60a5fa;
-      --btn-blue: #38bdf8;
-      --whatsapp-green: #25d366;
-      
-      --text-main: #f8fafc;
-      --text-muted: #cbd5e1;
-      
-      --border-normal: 1px solid rgba(255, 255, 255, 0.1);
-      --border-blue: 2px solid var(--accent-blue-light);
-      
-      --shadow-3d: 0 15px 35px -10px rgba(0, 0, 0, 0.6), 
-                  0 0 15px rgba(59, 130, 246, 0.2);
-      --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
-
-      --radius-xl: 24px;
-      --radius-lg: 16px;
-      --transition: all 0.3s ease;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      font-family: 'Tajawal', sans-serif;
-      background: var(--bg);
-      color: var(--text-main);
-      line-height: 1.6;
-      direction: rtl;
-      text-align: right;
-      overflow-x: hidden;
-    }
-
-    a { text-decoration: none; color: inherit; transition: var(--transition); }
-    h1, h2, h3 { color: #ffffff; font-weight: 800; margin-top: 0; }
-
-    .container {
-      width: min(1180px, 90%);
-      margin: auto;
-    }
-
-    /* --- القائمة العلوية --- */
-    .nav {
-      position: sticky;
-      top: 15px;
-      z-index: 1000;
-      width: min(1180px, 92%);
-      margin: 0 auto;
-      background: rgba(35, 31, 28, 0.95);
-      backdrop-filter: blur(16px);
-      border: var(--border-normal);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-card);
-      padding: 12px 25px;
-    }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      font-weight: 900;
-      font-size: 1.5rem;
-      color: #ffffff;
-    }
-
-    .logo span {
-      color: var(--accent-blue-light);
-    }
-
-    .menu {
-      display: flex;
-      gap: 15px;
-    }
-
-    .menu a {
-      color: var(--text-muted);
-      font-weight: 700;
-      padding: 8px 16px;
-      border-radius: 12px;
-      border: 1px solid transparent;
-    }
-
-    .menu a:hover, .menu a.active {
-      color: #ffffff;
-      background: rgba(59, 130, 246, 0.15);
-      border-color: var(--accent-blue);
-    }
-
-    .hamburger {
-      display: none;
-      background: none;
-      border: 0;
-      font-size: 1.8rem;
-      color: var(--text-main);
-      cursor: pointer;
-    }
-
-    .mobile-menu {
-      display: none;
-      padding-top: 15px;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      margin-top: 12px;
-    }
-
-    .mobile-menu.show { display: block; }
-
-    .mobile-menu a {
-      display: block;
-      padding: 10px 0;
-      color: var(--text-muted);
-      font-weight: 700;
-    }
-
-    /* --- زر "تواصل معنا" الواتساب العائم --- */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 25px;
-      left: 25px;
-      background-color: var(--whatsapp-green);
-      color: #fff;
-      border-radius: 50px;
-      padding: 12px 22px;
-      font-size: 1rem;
-      font-weight: 800;
-      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
-      z-index: 1100;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: var(--transition);
-    }
-
-    .whatsapp-float:hover {
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 15px 30px rgba(37, 211, 102, 0.6);
-    }
-
-    /* --- الأزرار --- */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 16px 32px;
-      border-radius: 16px;
-      font-weight: 800;
-      font-size: 1.05rem;
-      border: none;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .btn-blue {
-      background: var(--btn-blue);
-      color: #0f172a;
-      box-shadow: 0 10px 20px -5px rgba(56, 189, 248, 0.4);
-    }
-
-    .btn-blue:hover {
-      background: var(--accent-blue-light);
-      transform: translateY(-3px);
-      box-shadow: 0 12px 25px -5px rgba(56, 189, 248, 0.6);
-    }
-
-    .btn-outline {
-      background: var(--card-bg-light);
-      color: var(--text-main);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .btn-outline:hover {
-      transform: translateY(-3px);
-      border-color: var(--accent-blue-light);
-      color: var(--accent-blue-light);
-    }
-
-    /* --- قسم Hero --- */
-    .hero {
-      padding: 60px 0;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 40px;
-      align-items: center;
-    }
-
-    .hero-text-box {
-      background: var(--card-bg);
-      border: 1px solid rgba(59, 130, 246, 0.25);
-      border-radius: var(--radius-xl);
-      padding: 40px 35px;
-      box-shadow: var(--shadow-3d);
-      position: relative;
-    }
-
-    .badge-3d {
-      display: inline-block;
-      padding: 8px 18px;
-      background: var(--card-bg-light);
-      border: 1px solid rgba(59, 130, 246, 0.3);
-      color: var(--accent-blue-light);
-      border-radius: 99px;
-      font-weight: 800;
-      font-size: 0.9rem;
-      margin-bottom: 20px;
-    }
-
-    .hero-text-box h1 {
-      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
-      line-height: 1.25;
-      margin-bottom: 20px;
-    }
-
-    .hero-text-box p {
-      font-size: 1.15rem;
-      color: var(--text-muted);
-      margin-bottom: 30px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .hero-3d-card {
-      background: var(--card-bg);
-      border: var(--border-normal);
-      border-radius: var(--radius-xl);
-      padding: 35px;
-      box-shadow: var(--shadow-3d);
-      position: relative;
-    }
-
-    .code-window {
-      background: #110f0e;
-      border-radius: var(--radius-lg);
-      padding: 20px;
-      color: var(--accent-blue-light);
-      font-family: monospace;
-      direction: ltr;
-      text-align: left;
-    }
-
-    .window-dots {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 15px;
-    }
-
-    .dot { width: 10px; height: 10px; border-radius: 50%; }
-    .dot-red { background: #ef4444; }
-    .dot-yellow { background: #f59e0b; }
-    .dot-green { background: #10b981; }
-
-    /* --- الأقسام والبطاقات --- */
-    section { padding: 80px 0; }
-
-    .section-head {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-
-    .section-head h2 {
-      font-size: clamp(2.2rem, 4vw, 3rem);
-      margin-bottom: 15px;
-    }
-
-    .section-head p {
-      color: var(--text-muted);
-      font-size: 1.15rem;
-    }
-
-    .card-3d {
-      background: var(--card-bg);
-      border-radius: var(--radius-xl);
-      border: var(--border-normal);
-      box-shadow: var(--shadow-card);
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card-3d:hover {
-      transform: translateY(-8px);
-      border: var(--border-blue);
-      box-shadow: var(--shadow-3d);
-    }
-
-    .card-image-wrapper {
-      width: 100%;
-      height: 200px;
-      overflow: hidden;
-      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-      position: relative;
-      background: #2c2723;
-    }
-
-    .card-image-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: var(--transition);
-    }
-
-    .card-3d:hover .card-image-wrapper img {
-      transform: scale(1.08);
-    }
-
-    /* واجهة المتجر المصممة بـ CSS */
-    .store-mockup {
-      width: 100%;
-      height: 200px;
-      background: linear-gradient(135deg, #1e293b, #0f172a);
-      padding: 15px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .store-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(255,255,255,0.05);
-      padding: 8px 12px;
-      border-radius: 10px;
-    }
-
-    .store-products {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .product-box {
-      background: rgba(255,255,255,0.07);
-      border-radius: 8px;
-      padding: 8px;
-      text-align: center;
-      border: 1px solid rgba(255,255,255,0.05);
-    }
-
-    .product-img-dummy {
-      width: 100%;
-      height: 45px;
-      background: rgba(56, 189, 248, 0.2);
-      border-radius: 6px;
-      margin-bottom: 6px;
-    }
-
-    .product-price {
-      font-size: 0.75rem;
-      font-weight: 800;
-      color: var(--accent-blue-light);
-    }
-
-    /* --- تنسيق قسم المهارات --- */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: 20px;
-    }
-
-    .skill-card {
-      background: var(--card-bg);
-      border: var(--border-normal);
-      border-radius: var(--radius-lg);
-      padding: 22px 15px;
-      text-align: center;
-      transition: var(--transition);
-    }
-
-    .skill-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--accent-blue-light);
-      box-shadow: var(--shadow-3d);
-    }
-
-    .skill-icon {
-      font-size: 2.2rem;
-      margin-bottom: 10px;
-      display: block;
-    }
-
-    .skill-name {
-      font-weight: 800;
-      font-size: 1.1rem;
-      color: var(--text-main);
-      margin-bottom: 5px;
-    }
-
-    .skill-level {
-      font-size: 0.85rem;
-      color: var(--accent-blue-light);
-      font-weight: 700;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
-    }
-
-    .service-card-body {
-      padding: 25px;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-      gap: 35px;
-    }
-
-    .project-info {
-      padding: 25px;
-    }
-
-    .project-tag {
-      padding: 6px 14px;
-      background: rgba(59, 130, 246, 0.15);
-      color: var(--accent-blue-light);
-      border-radius: 99px;
-      font-weight: 800;
-      font-size: 0.85rem;
-    }
-
-    .footer {
-      padding: 40px 0;
-      background: #110e0c;
-      color: var(--text-muted);
-      text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.05);
-    }
-
-    @media (max-width: 992px) {
-      .hero-grid { grid-template-columns: 1fr; text-align: center; }
-      .hero-actions { justify-content: center; }
-      .hero-text-box { padding: 30px 20px; }
-      .grid-2 { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 768px) {
-      .menu { display: none; }
-      .hamburger { display: block; }
-    }
-  </style>
+<meta charset="UTF-8">
+<title>نظام إدارة استهلاك الماء والمخزون الذكي</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+/* المتغيرات الأساسية للألوان */
+:root { 
+    --primary: #2563eb; 
+    --bg: #f8fafc; 
+    --text: #1e293b; 
+    --border: #cbd5e1; 
+    --whatsapp: #25d366; 
+    --sms: #f59e0b; 
+    --backup: #0891b2; 
+    --rotate: #8b5cf6; 
+    --success: #10b981; 
+}  
+
+/* تنسيقات الطباعة A4 */
+@media print {
+    @page { size: A4 landscape; margin: 0.5cm; }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    .actions, .no-print, .backup-section, .modal, .modal-overlay, #stockAlert { display: none !important; }
+    body { background: #fff !important; padding: 0; }
+    .invoice { border: 2px solid var(--primary) !important; width: 98% !important; margin: auto !important; box-shadow: none !important; }
+    table { width: 100% !important; table-layout: fixed !important; font-size: 10pt !important; }
+    th { background-color: var(--primary) !important; color: white !important; }
+    .print-header-data { display: flex !important; justify-content: space-around; background: #f1f5f9 !important; padding: 10px; border-bottom: 2px solid var(--primary); margin-bottom: 15px; font-weight: bold; font-size: 12px; }
+}
+
+/* التنسيقات العامة للشاشة */
+body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 5px; }
+.invoice { background: #fff; max-width: 1050px; margin: auto; padding: 10px; border: 2px solid var(--primary); border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+h1 { text-align: center; margin: 5px 0; font-size: 18px; color: var(--primary); }
+.header-info { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 8px; font-weight: bold; padding: 5px; background: #f1f5f9; border-radius: 4px; }
+.print-header-data { display: none; }
+.table-wrapper { width: 100%; overflow-x: auto; margin-bottom: 10px; }
+table { width: 100%; border-collapse: collapse; font-size: 11px; table-layout: fixed; min-width: 950px; }
+th { background: var(--primary); color: #fff; padding: 6px; border: 1px solid #1e40af; }
+td { border: 1px solid var(--border); padding: 2px; text-align: center; height: 35px; }
+tfoot td { background: #f8fafc; font-weight: 900; color: #1e40af; border: 1px solid var(--border); }
+input.table-input { width: 100%; border: none; text-align: center; font-size: 12px; font-weight: 900; background: transparent; outline: none; color: var(--text); }
+
+.modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 15px; border: 2px solid var(--primary); border-radius: 10px; z-index: 1000; width: 330px; max-height: 90vh; overflow-y: auto; }
+.modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 999; }
+.modal label { font-size: 11px; font-weight: bold; color: var(--primary); display: block; margin-top: 5px; }
+.modal input, .modal select { width: 94%; padding: 6px; margin: 3px 0; border: 1px solid #ddd; border-radius: 4px; text-align: center; font-weight: bold; }
+
+.alert-banner { display: none; background: #fee2e2; border: 2px solid #ef4444; color: #991b1b; padding: 8px; border-radius: 6px; text-align: center; font-weight: bold; font-size: 12px; margin-bottom: 10px; }
+
+.actions { display: flex; justify-content: center; gap: 8px; margin: 10px 0; flex-wrap: wrap; }
+button { padding: 8px 15px; border: none; border-radius: 6px; font-size: 12px; cursor: pointer; color: #fff; font-weight: bold; }
+.add { background: var(--primary); } .del { background: #dc2626; } .prnt { background: #475569; }
+.pay-btn { background: var(--success); width: 100%; padding: 4px 0; border-radius: 4px; border: none; color: white; cursor: pointer; font-size: 10px; font-weight: bold; }
+.ws-btn { background: var(--whatsapp); width: 100%; padding: 4px 0; border-radius: 4px; border: none; color: white; cursor: pointer; font-size: 10px; font-weight: bold; }
+.ws-input { border: 1px solid #cbd5e1 !important; border-radius: 4px; height: 24px; width: 90%; text-align: center; font-size: 11px; font-weight: bold; }
+.backup-section { display: flex; justify-content: center; gap: 10px; padding: 10px; background: #f1f5f9; border-top: 1px dashed var(--primary); }
+.paid-row { background-color: #f0fdf4 !important; }
+.paid-row td { color: #166534 !important; }
+</style>
 </head>
-<body>
+<body>  
 
-  <!-- القائمة العلوية -->
-  <header class="nav">
-    <div class="nav-inner">
-      <a class="logo" href="#home">Yaseen <span>Mazaraq</span></a>
-      <nav class="menu">
-        <a href="#home" class="active">الرئيسية</a>
-        <a href="#services">الخدمات</a>
-        <a href="#skills">المهارات</a>
-        <a href="#portfolio">أعمالي</a>
-      </nav>
-      <button class="hamburger" onclick="toggleMenu()">☰</button>
+<!-- خلفية التعتيم للنافذة -->
+<div class="modal-overlay" id="overlay" onclick="toggleSettings()"></div>
+
+<!-- نافذة الإدارة والمخزون المنبثقة 3D -->
+<div class="modal" id="settingsModal" style="max-width: 90%; margin: 5vh auto; padding: 22px 18px; border-radius: 20px; background: #ffffff; box-shadow: 0 20px 40px rgba(0,0,0,0.25), 0 8px 16px rgba(0,0,0,0.15); border: 1px solid #e2e8f0; box-sizing: border-box;">
+    
+    <h3 style="text-align:center; color:#0284c7; margin-top:0; font-size: 1.25rem; font-weight: 800;">⚙️ الإدارة والمخزون</h3>
+    
+    <div style="margin-bottom: 10px;">
+        <label style="font-weight:600; color:#475569;">سعر الوحدة:</label>
+        <input type="number" id="waterPrice" oninput="calc()" style="width:100%; box-sizing:border-box;">
     </div>
-    <div id="mobileMenu" class="mobile-menu">
-      <a href="#home" onclick="toggleMenu()">الرئيسية</a>
-      <a href="#services" onclick="toggleMenu()">الخدمات</a>
-      <a href="#skills" onclick="toggleMenu()">المهارات</a>
-      <a href="#portfolio" onclick="toggleMenu()">أعمالي</a>
+
+    <div style="margin-bottom: 10px;">
+        <label style="font-weight:600; color:#475569;">إجمالي الكهرباء:</label>
+        <input type="number" id="extraPrice" oninput="calc()" style="width:100%; box-sizing:border-box;">
     </div>
-  </header>
 
-  <!-- زر تواصل معنا (واتساب عائم) -->
-  <a href="https://wa.me/967775840682" class="whatsapp-float" target="_blank">
-    <span>تواصل معنا</span>
-    <span>💬</span>
-  </a>
-
-  <!-- القسم الرئيسي -->
-  <main id="home" class="hero">
-    <div class="container hero-grid">
-      
-      <div class="hero-text-box">
-        <span class="badge-3d">💻 مصمم مواقع | طالب IT</span>
-        <h1>نصمّم تجارب رقمية تجسّد الاحترافية.</h1>
-        <p>نحول أفكارك إلى مواقع إلكترونية عصرية، سريعة، وبمجسمات بصرية عصرية تعكس قوة أعمالك.</p>
-        <div class="hero-actions">
-          <a class="btn btn-blue" href="https://wa.me/967775840682" target="_blank">تواصل معنا الآن</a>
-          <a class="btn btn-outline" href="#portfolio">شاهد الأعمال</a>
-        </div>
-      </div>
-
-      <div class="hero-3d-card">
-        <div class="code-window">
-          <div class="window-dots">
-            <span class="dot dot-red"></span>
-            <span class="dot dot-yellow"></span>
-            <span class="dot dot-green"></span>
-          </div>
-          <p><span style="color: #60a5fa;">const</span> <span style="color: #93c5fd;">designer</span> = <span style="color: #34d399;">"Yaseen"</span>;</p>
-          <p><span style="color: #60a5fa;">const</span> <span style="color: #93c5fd;">skills</span> = [<span style="color: #34d399;">"UI/UX"</span>, <span style="color: #34d399;">"Web Dev"</span>, <span style="color: #34d399;">"Graphic Design"</span>];</p>
-          <p><span style="color: #f43f5e;">buildAwesomeWebsite</span>(designer, skills);</p>
-        </div>
-      </div>
-
+    <div style="margin-bottom: 10px;">
+        <label style="font-weight:600; color:#475569;">سعر الوايت (للطباعة):</label>
+        <input type="number" id="truckPrice" oninput="calc()" style="width:100%; box-sizing:border-box;">
     </div>
-  </main>
 
-  <!-- قسم الخدمات -->
-  <section id="services">
-    <div class="container">
-      <div class="section-head">
-        <h2>الخدمات</h2>
-        <p>حلول تقنية وبصرية متكاملة تناسب طموح مشروعك.</p>
-      </div>
-      <div class="grid-3">
-        
-        <div class="card-3d">
-          <div class="card-image-wrapper">
-            <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=600&q=80" alt="تصميم وتطوير المواقع">
-          </div>
-          <div class="service-card-body">
-            <h3>تصميم وتطوير المواقع</h3>
-            <p style="color: var(--text-muted);">بناء مواقع إلكترونية متكاملة ومتاجر حديثة تناسب احتياجاتك.</p>
-          </div>
-        </div>
-
-        <div class="card-3d">
-          <div class="card-image-wrapper">
-            <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=600&q=80" alt="تصميم جرافيك">
-          </div>
-          <div class="service-card-body">
-            <h3>تصميم جرافيك</h3>
-            <p style="color: var(--text-muted);">ابتكار شعارات وهويات بصرية احترافية تبرز العلامة التجارية.</p>
-          </div>
-        </div>
-
-        <div class="card-3d">
-          <div class="card-image-wrapper">
-            <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=600&q=80" alt="تصميم واجهات UI/UX">
-          </div>
-          <div class="service-card-body">
-            <h3>تصميم واجهات (UI/UX)</h3>
-            <p style="color: var(--text-muted);">تصميم متناسق وعصري يضمن تجربة سريعة وممتعة للمستخدم.</p>
-          </div>
-        </div>
-
-        <div class="card-3d">
-          <div class="card-image-wrapper">
-            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80" alt="التجاوب الكامل">
-          </div>
-          <div class="service-card-body">
-            <h3>التجاوب الكامل</h3>
-            <p style="color: var(--text-muted);">موقعك يعمل بكفاءة عالية على الجوال، التابلت، والكمبيوتر.</p>
-          </div>
-        </div>
-
-      </div>
+    <div style="margin-bottom: 10px;">
+        <label style="font-weight:600; color:#475569;">رقم حساب الدفع:</label>
+        <input type="text" id="payNumber" oninput="calc()" style="width:100%; box-sizing:border-box;">
     </div>
-  </section>
 
-  <!-- قسم المهارات -->
-  <section id="skills" style="background: rgba(255, 255, 255, 0.015);">
-    <div class="container">
-      <div class="section-head">
-        <h2>المهارات والتقنيات</h2>
-        <p>الأدوات واللغات التي أعتمد عليها في تنفيذ المشاريع.</p>
-      </div>
-      <div class="skills-grid">
-        
-        <div class="skill-card">
-          <span class="skill-icon">🌐</span>
-          <div class="skill-name">HTML5 / CSS3</div>
-          <div class="skill-level">متقدم</div>
-        </div>
-
-        <div class="skill-card">
-          <span class="skill-icon">⚡</span>
-          <div class="skill-name">JavaScript</div>
-          <div class="skill-level">تفاعلي</div>
-        </div>
-
-        <div class="skill-card">
-          <span class="skill-icon">🎨</span>
-          <div class="skill-name">Graphic Design</div>
-          <div class="skill-level">إبداعي</div>
-        </div>
-
-        <div class="skill-card">
-          <span class="skill-icon">🖥️</span>
-          <div class="skill-name">UI / UX Design</div>
-          <div class="skill-level">عصري</div>
-        </div>
-
-        <div class="skill-card">
-          <span class="skill-icon">🗄️</span>
-          <div class="skill-name">SQL Database</div>
-          <div class="skill-level">إدارة بيانات</div>
-        </div>
-
-        <div class="skill-card">
-          <span class="skill-icon">📱</span>
-          <div class="skill-name">Responsive Design</div>
-          <div class="skill-level">متجاوب 100%</div>
-        </div>
-
-      </div>
+    <div style="margin: 12px 0;">
+        <label style="font-weight:600; color:#334155;">
+            <input type="checkbox" id="enableStockCheck" onchange="calc()" checked style="width:auto; vertical-align:middle; transform: scale(1.1);">
+            تفعيل إدارة ومراقبة مخزون الخزان
+        </label>
     </div>
-  </section>
 
-  <!-- قسم الأعمال -->
-  <section id="portfolio">
-    <div class="container">
-      <div class="section-head">
-        <h2>نماذج الأعمال</h2>
-        <p>استعراض سريع لأحدث المشاريع المنفذة.</p>
-      </div>
-      <div class="grid-2">
-        
-        <!-- نموذج المتجر -->
-        <article class="card-3d">
-          <div class="store-mockup">
-            <div class="store-header">
-              <span style="font-weight: 800; font-size: 0.85rem; color: #fff;">🛍️ STORE ONLINE</span>
-              <span style="background: var(--accent-blue); padding: 2px 8px; border-radius: 6px; font-size: 0.75rem;">🛒 3</span>
+    <!-- كرت المخزون الداخلي 3D -->
+    <div class="stock-section" id="stockSectionModal" style="background: linear-gradient(145deg, #f8fafc, #f1f5f9); padding: 18px 14px; border-radius: 16px; border: 1px solid #cbd5e1; margin: 15px 0; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);">
+        <div style="margin-bottom: 10px;">
+            <label style="display:block; margin-bottom: 4px; font-weight:700; color:#334155;">📦 مخزون الخزان السابق:</label>
+            <input type="number" id="prevStock" oninput="calc()" style="width: 100%; box-sizing: border-box; border-radius: 8px; border: 1px solid #cbd5e1; padding: 8px;">
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label style="display:block; margin-bottom: 4px; font-weight:700; color:#334155;">📥 كمية التعبئة الجديدة:</label>
+            <input type="number" id="fillTotal" oninput="calc()" style="width: 100%; box-sizing: border-box; border-radius: 8px; border: 1px solid #cbd5e1; padding: 8px;">
+        </div>
+
+        <div style="margin-bottom: 14px;">
+            <label style="display:block; margin-bottom: 4px; color: #0284c7; font-weight: 800;">📅 متوسط الاستهلاك اليومي (وحدة/يوم):</label>
+            <input type="number" id="dailyUsage" value="1.5" step="0.1" min="0.1" oninput="calc()" style="width: 100%; box-sizing: border-box; border-radius: 8px; border: 1px solid #7dd3fc; padding: 8px;">
+        </div>
+
+        <div class="stock-result" style="padding: 14px; background: #ffffff; border-radius: 12px; border-bottom: 4px solid #38bdf8; text-align: center;">
+            <div style="font-weight: 800; font-size: 1.05rem; color: #1e293b; margin-bottom: 8px;">
+                💧 المتبقي الحالي: <span id="currentStock" style="color: #0284c7; font-size: 1.2rem;">0.0</span> وحدة
             </div>
-            <div class="store-products">
-              <div class="product-box">
-                <div class="product-img-dummy"></div>
-                <div class="product-price">$49</div>
-              </div>
-              <div class="product-box">
-                <div class="product-img-dummy" style="background: rgba(96, 165, 250, 0.3);"></div>
-                <div class="product-price">$89</div>
-              </div>
-              <div class="product-box">
-                <div class="product-img-dummy" style="background: rgba(56, 189, 248, 0.4);"></div>
-                <div class="product-price">$29</div>
-              </div>
+            <div style="font-size: 0.95rem; font-weight: 800; color: #0369a1; background: #e0f2fe; padding: 10px; border-radius: 10px;">
+                ⏳ يكفي لمدة: <span id="daysLeftDisplay" style="font-size: 1.25rem; color: #0284c7;">0</span> يوم تقريباً
             </div>
-          </div>
-          <div class="project-info">
-            <span class="project-tag">متجر إلكتروني</span>
-            <h3>تصميم متجر إلكتروني</h3>
-            <p style="color: var(--text-muted); margin-top: 10px;">واجهة متجر احترافية لعرض المنتجات وإدارة المبيعات بكل سهولة.</p>
-          </div>
-        </article>
-
-        <!-- نموذج السيرة الذاتية -->
-        <article class="card-3d">
-          <div class="card-image-wrapper">
-            <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80" alt="سيرة ذاتية تفاعلية">
-          </div>
-          <div class="project-info">
-            <span class="project-tag">سيرة ذاتية</span>
-            <h3>سيرة ذاتية تفاعلية</h3>
-            <p style="color: var(--text-muted); margin-top: 10px;">عرض الخبرات الشخصية والمهارات بطريقة جذابة ومودرن.</p>
-          </div>
-        </article>
-
-      </div>
+        </div>
     </div>
-  </section>
 
-  <!-- التذييل -->
-  <footer class="footer">
-    <div class="container">
-      <p style="font-weight: 800; color: #fff;">Yaseen Mazaraq | 2026</p>
-      <p style="margin: 0;">جميع الحقوق محفوظة.</p>
+    <!-- زر 3D بارز للحفظ الإغلاق -->
+    <button style="background: linear-gradient(180deg, #0284c7, #0369a1); width: 100%; color: white; font-weight: bold; margin-top: 25px; margin-bottom: 10px; padding: 14px; border: none; border-radius: 12px; border-bottom: 3px solid #075985; font-size: 1rem;" onclick="toggleSettings()">حفظ وإغلاق</button>
+</div>
+<div class="invoice">  
+    <h1>💧 كشف استهلاك الماء والمخزون</h1>  
+
+    <div class="alert-banner" id="stockAlert"></div>
+
+    <div class="print-header-data">
+        <div>🚚 سعر الوايت: <span id="pTruck">0</span></div>
+        <div>⚡ إجمالي الكهرباء: <span id="pElec">0</span></div>
+        <div>💧 سعر الوحدة: <span id="pUnit">0</span></div>
+        <div>💰 تحصيل الشهر: <span id="pMonth">0</span></div>
+        <div>📅 التاريخ: <span id="pDate">---</span></div>
     </div>
-  </footer>
 
-  <!-- السكربت المخصص للتحكم بالقائمة -->
-  <script>
-    function toggleMenu() {
-      const mobileMenu = document.getElementById('mobileMenu');
-      mobileMenu.classList.toggle('show');
+    <div class="header-info no-print">  
+        <div>📅 التاريخ: <span id="printDate">---</span></div>  
+        <div>💰 الإجمالي: <span id="displayGrand">0</span> ريال</div>  
+    </div>  
+
+    <div class="table-wrapper">  
+        <table>  
+            <thead>  
+                <tr>  
+                    <th style="width:30px">م</th>  
+                    <th style="width:100px">المستأجر</th>  
+                    <th style="width:70px">السابقة</th>  
+                    <th style="width:70px">الحالية</th>  
+                    <th style="width:60px">الفارق</th>  
+                    <th style="width:70px">الكهرباء</th> 
+                    <th style="width:70px">قيمة الماء</th>  
+                    <th style="width:75px">الإجمالي</th>  
+                </tr>  
+            </thead>  
+            <tbody id="tbody"></tbody>
+            <tfoot>
+                <tr style="background:#f1f5f9;">
+                    <td colspan="2">إجمالي القراءات</td>
+                    <td id="sum-prev">0</td><td id="sum-curr">0</td><td id="sum-diff">0</td>
+                    <td id="sum-elec">0</td><td id="sum-water">0</td><td id="sum-total">0</td>
+                </tr>
+            </tfoot>
+        </table>  
+    </div>  
+
+    <div class="actions no-print">
+        <button class="add" onclick="addRow()">➕ إضافة</button>
+        <button class="del" onclick="deleteLastRow()">➖ حذف</button>
+        <button class="add" style="background: #25d366;" onclick="copyAllBills()">📋 نسخ كشف للواتساب</button>
+        <button style="background:var(--rotate)" onclick="rotateReadings()">🔄 شهر جديد</button>
+        <button class="prnt" onclick="window.print()">🖨️ طباعة</button>
+        <button style="background: #64748b" onclick="toggleSettings()">⚙️ الإدارة والمخزون</button>
+    </div>
+    
+    <div class="no-print">  
+        <h3 style="text-align:center; color:var(--primary);">📥 قسم التحصيل</h3>
+        <div class="table-wrapper">  
+            <table>  
+                <thead>  
+                    <tr style="background:#475569; color:#fff;">  
+                        <th style="width:30px">م</th><th style="width:100px">الاسم</th><th style="width:85px">قيمة الشهر</th>
+                        <th style="width:85px">متأخرات</th><th style="width:95px; background: #059669;">المطلوب</th>
+                        <th style="width:95px">الجوال</th><th style="width:60px">تحصيل</th><th style="width:70px">واتس</th>  
+                    </tr>  
+                </thead>  
+                <tbody id="wsTbody"></tbody>  
+                <tfoot>
+                    <tr style="background:#eff6ff;">
+                        <td colspan="2">إجمالي المستحقات</td>
+                        <td id="sum-unpaid-month" style="color:#f97316">0</td>
+                        <td id="sum-unpaid-debts" style="color:red">0</td>
+                        <td id="sum-unpaid-all" style="color:#059669">0</td>
+                        <td colspan="3"></td>
+                    </tr>
+                </tfoot>
+            </table>  
+        </div>  
+    </div>
+
+    <div class="backup-section no-print">
+        <button class="add" style="background:var(--backup)" onclick="exportData()">💾 حفظ نسخة</button>
+        <button class="add" style="background:#6366f1" onclick="document.getElementById('fileInput').click()">📂 استعادة</button>
+        <input type="file" id="fileInput" style="display:none" onchange="importData(event)">
+    </div>
+</div>
+<script>
+const DB_NAME = "water_system_v18_smart"; 
+
+const tbody = document.getElementById("tbody");  
+const wsTbody = document.getElementById("wsTbody");  
+let paidFlags = []; 
+let prevDebtsHistory = [];
+
+function toggleSettings() {
+    const m = document.getElementById("settingsModal"), o = document.getElementById("overlay");
+    m.style.display = m.style.display === "block" ? "none" : "block";
+    o.style.display = o.style.display === "block" ? "none" : "block";
+}
+
+function addRow(vals = ["", "", 0, 0, "", 0, false]) {  
+    const idx = tbody.children.length;  
+    paidFlags[idx] = vals[6] || false;
+
+    const tr = document.createElement("tr");  
+    tr.innerHTML = `<td>${idx+1}</td><td><input class="table-input" value="${vals[1]||''}" oninput="sync(${idx}, this.value); calc();"></td>  
+        <td><input type="number" class="table-input v-prev" value="${vals[2]||0}" oninput="calc()"></td>  
+        <td><input type="number" class="table-input v-curr" value="${vals[3]||0}" oninput="calc()"></td>  
+        <td class="v-diff">0</td><td class="v-elec">0</td><td class="v-water-val">0</td><td class="v-t" style="font-weight:bold;">0</td>`;  
+    tbody.appendChild(tr);  
+
+    const wsTr = document.createElement("tr");  
+    wsTr.innerHTML = `<td>${idx+1}</td><td id="ws-n-${idx}" style="font-weight:bold;">${vals[1]||'---'}</td>  
+        <td id="m-v-${idx}" style="color:#f97316;">0</td>  
+        <td><input type="number" class="ws-input" style="color:red" id="db-${idx}" value="${vals[5]||0}" oninput="calc()"></td>  
+        <td id="f-t-${idx}" style="font-weight:bold;">0</td>  
+        <td><input class="ws-input" id="ph-${idx}" value="${vals[4]||''}" placeholder="77..."></td>  
+        <td><button class="pay-btn" id="btn-p-${idx}" onclick="handlePayment(${idx})">✅</button></td>  
+        <td><button class="ws-btn" onclick="send(${idx}, 'ws')">📲</button></td>`;  
+    wsTbody.appendChild(wsTr);  
+    
+    calc();  
+}  
+
+function handlePayment(idx) {
+    const totalReq = parseFloat(document.getElementById(`f-t-${idx}`).innerText) || 0;
+    const currentDb = parseFloat(document.getElementById(`db-${idx}`).value) || 0;
+    
+    if (paidFlags[idx]) {
+        if (confirm("هل تريد إلغاء عملية التحصيل الأخيرة وإعادة المتأخرات وحالة الفاتورة لما كانت عليه؟")) {
+            paidFlags[idx] = false;  
+            if (prevDebtsHistory[idx] !== undefined) {
+                document.getElementById(`db-${idx}`).value = prevDebtsHistory[idx];
+            }
+            calc();
+        }
+        return;
     }
-  </script>
 
+    let paid = prompt(`المطلوب الكلي حالياً: ${totalReq} ريال\nأدخل المبلغ المستلم لتصفيته أو تسديد جزء منه/دفعة زائدة:`, totalReq > 0 ? totalReq : 0);
+    if (paid !== null && paid !== "") {
+        let amount = parseFloat(paid) || 0;
+        let remaining = totalReq - amount;
+        prevDebtsHistory[idx] = currentDb;
+        document.getElementById(`db-${idx}`).value = Math.round(remaining);
+        paidFlags[idx] = true;
+        calc();
+    }
+}
+
+function rotateReadings() {
+    if(confirm("تدوير لشهر جديد؟ سيتم ترحيل المبالغ المتبقية كمتأخرات وتصفير القراءات الحالية.")) {
+        const useStock = document.getElementById("enableStockCheck").checked;
+        if(useStock) {
+            document.getElementById("prevStock").value = document.getElementById("currentStock").innerText;
+            document.getElementById("fillTotal").value = 0;
+        }
+        tbody.querySelectorAll("tr").forEach((tr, i) => {
+            document.getElementById(`db-${i}`).value = document.getElementById(`f-t-${i}`).innerText;
+            tr.querySelector(".v-prev").value = tr.querySelector(".v-curr").value;
+            tr.querySelector(".v-curr").value = 0;
+            paidFlags[i] = false;
+        });
+        calc();
+    }
+}
+
+function calc() {  
+    const wp = parseFloat(document.getElementById("waterPrice")?.value) || 0;  
+    const epT = parseFloat(document.getElementById("extraPrice")?.value) || 0;  
+    const ps = parseFloat(document.getElementById("prevStock")?.value) || 0;
+    const fill = parseFloat(document.getElementById("fillTotal")?.value) || 0;
+    const useStock = document.getElementById("enableStockCheck")?.checked;
+
+    const stockModal = document.getElementById("stockSectionModal");
+    if (stockModal) stockModal.style.display = useStock ? "block" : "none";
+
+    let sumDiffs = 0, sumElec = 0, sumWater = 0, sumTotal = 0, sumPrev = 0, sumCurr = 0;
+    const rows = tbody.querySelectorAll("tr");
+    
+    rows.forEach(tr => { 
+        let p = parseFloat(tr.querySelector(".v-prev")?.value) || 0;
+        let c = parseFloat(tr.querySelector(".v-curr")?.value) || 0;
+        sumPrev += p; sumCurr += c;
+        sumDiffs += Math.max(0, c - p); 
+    });
+
+    const currentStock = Math.max(0, (ps + fill) - sumDiffs);
+    const currentStockEl = document.getElementById("currentStock");
+    if (currentStockEl) currentStockEl.innerText = currentStock.toFixed(1);
+
+    const dailyUsageInput = document.getElementById("dailyUsage");
+    const dailyUsage = parseFloat(dailyUsageInput?.value) || 1.5;
+
+    let daysLeft = 0;
+    if (currentStock > 0 && dailyUsage > 0) {
+        daysLeft = parseFloat((currentStock / dailyUsage).toFixed(1));
+    }
+
+    const daysLeftDisplay = document.getElementById("daysLeftDisplay");
+    if (daysLeftDisplay) daysLeftDisplay.innerText = daysLeft;
+
+    const alertBox = document.getElementById("stockAlert");
+    if (useStock && alertBox) {
+        if (currentStock > 0 && daysLeft <= 4) {
+            alertBox.style.display = "block";
+            alertBox.innerHTML = `⚠️ <b>تنبيه مخزون المياه:</b> المتبقي بالفول (${currentStock.toFixed(1)} وحدة) يكفي لـ <b>${daysLeft} أيام فقط</b> بناءً على متوسط الاستهلاك! يرجى طلب وايت جديد.`;
+            sendWaterNotification(daysLeft, currentStock);
+        } else {
+            alertBox.style.display = "none";
+        }
+    } else if (alertBox) {
+        alertBox.style.display = "none";
+    }
+
+    let tMonth = 0, uM = 0, uD = 0, uA = 0;
+    let data = [];
+
+    rows.forEach((tr, i) => {  
+        let v1 = parseFloat(tr.querySelector(".v-prev")?.value) || 0;
+        let v2 = parseFloat(tr.querySelector(".v-curr")?.value) || 0;
+        let diff = Math.max(0, v2 - v1);
+        let waterVal = diff * wp; 
+        let eShare = sumDiffs > 0 ? (diff / sumDiffs) * epT : 0;
+        let total = waterVal + eShare;
+
+        if (tr.querySelector(".v-diff")) tr.querySelector(".v-diff").innerText = diff.toFixed(1); 
+        if (tr.querySelector(".v-elec")) tr.querySelector(".v-elec").innerText = Math.round(eShare); 
+        if (tr.querySelector(".v-water-val")) tr.querySelector(".v-water-val").innerText = Math.round(waterVal); 
+        if (tr.querySelector(".v-t")) tr.querySelector(".v-t").innerText = Math.round(total);
+        
+        let unpaidMonth = paidFlags[i] ? 0 : total;
+        if (document.getElementById(`m-v-${i}`)) document.getElementById(`m-v-${i}`).innerText = Math.round(unpaidMonth);
+        const db = parseFloat(document.getElementById(`db-${i}`)?.value) || 0;
+        const final = unpaidMonth + db; 
+        if (document.getElementById(`f-t-${i}`)) document.getElementById(`f-t-${i}`).innerText = Math.round(final);
+        
+        const btn = document.getElementById(`btn-p-${i}`);
+        const wsRow = wsTbody.children[i];
+
+        if (wsRow && btn) {
+            if (final < 0) {
+                wsRow.style.background = "#e0f2fe"; 
+                wsRow.style.opacity = "1";
+                btn.innerText = "رصيد 🎁";
+                btn.style.background = "#0284c7";   
+            }
+            else if (final === 0) {
+                wsRow.style.background = "#f1f5f9"; 
+                wsRow.style.opacity = "0.65";       
+                btn.innerText = "تم ✅";
+                btn.style.background = "#64748b";   
+            } 
+            else if (paidFlags[i] && db > 0) {
+                wsRow.style.background = "#fee2e2"; 
+                wsRow.style.opacity = "1";
+                btn.innerText = "متبقي ⚠️";
+                btn.style.background = "#ef4444";   
+            } 
+            else {
+                wsRow.style.background = "#dcfce7"; 
+                wsRow.style.opacity = "1";
+                btn.innerText = "✅";
+                btn.style.background = "#10b981";   
+            }
+        }
+
+        sumElec += eShare; sumWater += waterVal; sumTotal += total;
+        tMonth += total; uM += unpaidMonth; uD += db; uA += final;
+        data.push(["", tr.querySelector(".table-input")?.value || "", v1, v2, document.getElementById(`ph-${i}`)?.value || "", db, paidFlags[i]]);
+    });  
+    
+    if (document.getElementById("sum-prev")) document.getElementById("sum-prev").innerText = sumPrev.toFixed(1);
+    if (document.getElementById("sum-curr")) document.getElementById("sum-curr").innerText = sumCurr.toFixed(1);
+    if (document.getElementById("sum-diff")) document.getElementById("sum-diff").innerText = sumDiffs.toFixed(1);
+    if (document.getElementById("sum-elec")) document.getElementById("sum-elec").innerText = Math.round(sumElec).toLocaleString();
+    if (document.getElementById("sum-water")) document.getElementById("sum-water").innerText = Math.round(sumWater).toLocaleString();
+    if (document.getElementById("sum-total")) document.getElementById("sum-total").innerText = Math.round(sumTotal).toLocaleString();
+    if (document.getElementById("sum-unpaid-month")) document.getElementById("sum-unpaid-month").innerText = Math.round(uM).toLocaleString();
+    if (document.getElementById("sum-unpaid-debts")) document.getElementById("sum-unpaid-debts").innerText = Math.round(uD).toLocaleString();
+    if (document.getElementById("sum-unpaid-all")) document.getElementById("sum-unpaid-all").innerText = Math.round(uA).toLocaleString();
+    if (document.getElementById("displayGrand")) document.getElementById("displayGrand").innerText = Math.round(tMonth).toLocaleString();  
+    
+    if (document.getElementById("pTruck")) document.getElementById("pTruck").innerText = document.getElementById("truckPrice")?.value || 0;
+    if (document.getElementById("pElec")) document.getElementById("pElec").innerText = epT;
+    if (document.getElementById("pUnit")) document.getElementById("pUnit").innerText = wp;
+    if (document.getElementById("pMonth")) document.getElementById("pMonth").innerText = Math.round(tMonth).toLocaleString();
+
+    localStorage.setItem(DB_NAME, JSON.stringify({
+        wp, ep: epT, tp: document.getElementById("truckPrice")?.value || 0, 
+        pn: document.getElementById("payNumber")?.value || "", 
+        dailyUsage: dailyUsage,
+        useStock, stock: {ps, fill}, rows: data
+    }));  
+}  
+function sendWaterNotification(daysLeft, stockLeft) {
+    if ("Notification" in window) {
+        if (Notification.permission === "granted") {
+            new Notification("🚨 تنبيه: مخزون المياه منخفض!", {
+                body: `الماء المتبقي يكفي لـ ${daysLeft} أيام فقط (${stockLeft.toFixed(1)} وحدة).`,
+                icon: "https://cdn-icons-png.flaticon.com/512/3105/3105807.png"
+            });
+        } else if (Notification.permission !== "denied") {
+            Notification.requestPermission();
+        }
+    }
+}
+
+function sync(i, v) { 
+    if (document.getElementById(`ws-n-${i}`)) document.getElementById(`ws-n-${i}`).innerText = v || '---'; 
+}  
+
+function deleteLastRow() { 
+    if(confirm("حذف آخر سجل؟")){ 
+        tbody.removeChild(tbody.lastChild); 
+        wsTbody.removeChild(wsTbody.lastChild); 
+        paidFlags.pop(); 
+        calc(); 
+    } 
+}  
+
+function send(i, type) {  
+    let name = tbody.children[i].querySelector(".table-input").value;
+    const v1 = tbody.children[i].querySelector(".v-prev").value, v2 = tbody.children[i].querySelector(".v-curr").value;
+    let currentBill = paidFlags[i] ? "0" : Math.round(parseFloat(tbody.children[i].querySelector(".v-t").innerText) || 0);
+    const db = document.getElementById(`db-${i}`).value, total = document.getElementById(`f-t-${i}`).innerText;
+    const pN = document.getElementById("payNumber").value, ph = document.getElementById(`ph-${i}`).value;
+    let cleanName = name.startsWith("الأخ") ? name : "الأخ " + name;
+    
+    const msg = `💧 فاتورة استهلاك الماء\n👤 المستأجر: ${cleanName}\n🔢 القراءة: (${v1} إلى ${v2})\n💰 الفاتورة: ${currentBill} ريال\n🛑 متأخرات: ${Math.round(db)} ريال\n------------------\n✅ الإجمالي المطلوب: ${total} ريال\n\n💳 السداد عبر جيب / نقد / ${pN}\n\nشكراً لتعاونكم ✨`;
+    window.open((type === 'ws' ? `https://wa.me/${ph}?text=` : `sms:${ph}?body=`) + encodeURIComponent(msg), '_blank');
+}
+
+function exportData() {
+    const data = localStorage.getItem(DB_NAME);
+    if (!data) return;
+    const blob = new Blob([data], {type: "application/json"});
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = `نسخة_الماء_${new Date().toISOString().slice(0,10)}.json`;
+    a.click();
+}
+
+function importData(event) {
+    const r = new FileReader(); 
+    r.onload = (e) => { 
+        localStorage.setItem(DB_NAME, e.target.result); 
+        location.reload(); 
+    };
+    r.readAsText(event.target.files[0]);
+}
+
+window.onload = () => {
+    const today = new Date().toISOString().slice(0, 10);
+    document.getElementById("printDate").innerText = today;
+    document.getElementById("pDate").innerText = today;
+
+    const saved = localStorage.getItem(DB_NAME);
+    if (saved) {
+        const d = JSON.parse(saved);
+        document.getElementById("waterPrice").value = d.wp || 0;
+        document.getElementById("extraPrice").value = d.ep || 0;
+        document.getElementById("truckPrice").value = d.tp || 0;
+        document.getElementById("payNumber").value = d.pn || "";
+        if (document.getElementById("dailyUsage")) document.getElementById("dailyUsage").value = d.dailyUsage || 1.5;
+        document.getElementById("enableStockCheck").checked = d.useStock !== undefined ? d.useStock : true;
+        if(d.stock) {
+            document.getElementById("prevStock").value = d.stock.ps || 0;
+            document.getElementById("fillTotal").value = d.stock.fill || 0;
+        }
+        if (d.rows && d.rows.length) {
+            d.rows.forEach(r => addRow(r));
+        } else {
+            initDefaultRows();
+        }
+    } else {
+        document.getElementById("waterPrice").value = 15;
+        document.getElementById("extraPrice").value = 50;
+        document.getElementById("truckPrice").value = 150;
+        document.getElementById("prevStock").value = 100;
+        document.getElementById("fillTotal").value = 50;
+        if (document.getElementById("dailyUsage")) document.getElementById("dailyUsage").value = 1.5;
+        initDefaultRows();
+    }
+    calc();
+};
+
+function initDefaultRows() {
+    addRow(["", "شقة 1", 100, 120, "967700000001", 0, false]);
+    addRow(["", "شقة 2", 200, 235, "967700000002", 0, false]);
+    addRow(["", "شقة 3", 150, 180, "967700000003", 0, false]);
+}
+
+function copyAllBills() {
+    const rows = tbody.querySelectorAll("tr");
+    if (rows.length === 0) {
+        alert("لا توجد شقق في الجدول لنسخ تقاريرها!");
+        return;
+    }
+
+    const pN = document.getElementById("payNumber").value;
+    const today = new Date().toISOString().slice(0, 10);
+
+    let fullReport = `💧 *كشف فواتير استهلاك الماء الشامل* 💧\n📅 التاريخ: ${today}\n----------------------------------\n\n`;
+
+    rows.forEach((tr, i) => {
+        let name = tr.querySelector(".table-input").value || `شقة ${i+1}`;
+        let cleanName = name.startsWith("الأخ") ? name : "الأخ " + name;
+        const v1 = tr.querySelector(".v-prev").value;
+        const v2 = tr.querySelector(".v-curr").value;
+        
+        let currentBill = paidFlags[i] ? "0" : Math.round(parseFloat(tr.querySelector(".v-t").innerText) || 0);
+        const db = document.getElementById(`db-${i}`).value || 0;
+        const total = document.getElementById(`f-t-${i}`).innerText || 0;
+
+        fullReport += `👤 *${cleanName}*\n`;
+        fullReport += `🔢 القراءة: (${v1} إلى ${v2})\n`;
+        fullReport += `💰 الفاتورة: ${currentBill} ريال | 🛑 متأخرات: ${Math.round(db)} ريال\n`;
+        fullReport += `✅ *الإجمالي المطلوب: ${total} ريال*\n`;
+        fullReport += `----------------------------------\n`;
+    });
+
+    const grandTotal = document.getElementById("sum-unpaid-all").innerText;
+    fullReport += `\n📊 *إجمالي المطلوب من جميع الشقق:* ${grandTotal} ريال\n`;
+    if (pN) {
+        fullReport += `💳 السداد عبر جيب / نقد / ${pN}\n`;
+    }
+    fullReport += `\nشكراً لتعاونكم جميعاً ✨`;
+
+        navigator.clipboard.writeText(fullReport).then(function() {
+        alert("تم نسخ كشف فواتير جميع الشقق بنجاح!");
+    }).catch(function(err) {
+        alert("حدث خطأ أثناء النسخ، يرجى المحاولة مرة أخرى.");
+    });
+}
+
+function sendTelegramAlert(daysLeft, currentVolume) {
+    var token = "8931922787:AAGzA5nLqX5qKug6orSe0J8HzzZm1dkk9D4";
+    var chatId = "5475216446";
+    var alertSent = localStorage.getItem("waterTelegramAlertSent");
+
+    if (daysLeft <= 4 && !alertSent) {
+        var msg = "🚨 تنبيه: مخزون المياه منخفض! 🚨\n\n⚠️ المتبقي يكفي لـ " + daysLeft + " أيام فقط.\n💧 الكمية الحالية: " + currentVolume.toFixed(1) + " وحدة.\n\nيرجى طلب وايت جديد!";
+        
+        fetch("https://api.telegram.org/bot" + token + "/sendMessage", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ chat_id: chatId, text: msg })
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(d) {
+            console.log("Telegram Sent", d);
+            localStorage.setItem("waterTelegramAlertSent", "true");
+        })
+        .catch(function(e) { console.error(e); });
+    } else if (daysLeft > 4) {
+        localStorage.removeItem("waterTelegramAlertSent");
+    }
+}
+
+var oldSendWaterNotif = typeof sendWaterNotification !== "undefined" ? sendWaterNotification : null;
+sendWaterNotification = function(daysLeft, stockLeft) {
+    sendTelegramAlert(daysLeft, stockLeft);
+    if (oldSendWaterNotif) oldSendWaterNotif(daysLeft, stockLeft);
+};
+</script>
 </body>
 </html>
+
