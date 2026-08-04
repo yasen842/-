@@ -593,6 +593,76 @@ sendWaterNotification = function(daysLeft, stockLeft) {
     sendTelegramAlert(daysLeft, stockLeft);
     if (oldSendWaterNotif) oldSendWaterNotif(daysLeft, stockLeft);
 };
+
+    // ===== دالة إرسال التنبيه لتليجرام =====
+function sendTelegramAlert(daysLeft) {
+    // ✅ التوكن الكامل
+    var token = "8931922787:AAGzA5nLqX5qKug6orSe0J8HzzZm1dkk9D4";
+    var chatId = "5475216446";
+    var alertSent = localStorage.getItem("alertSent");
+
+    if (daysLeft <= 4 && !alertSent) {
+        var msg = "😊 تمكن من منخفض! المتابعة!";
+        
+        // ✅ الطريقة الصحيحة لإرسال الرسالة
+        fetch("https://api.telegram.org/bot" + token + "/sendMessage", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                chat_id: chatId,
+                text: msg
+            })
+        })
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            console.log("✅ تم الإرسال:", data);
+            localStorage.setItem("alertSent", "true");
+        })
+        .catch(function(error) {
+            console.error("❌ فشل الإرسال:", error);
+        });
+    } else if (daysLeft > 4) {
+        localStorage.removeItem("alertSent");
+    }
+}
+
+  // ====== دالة إرسال التنبيه لتليجرام ======
+function sendTelegramAlert(daysLeft) {
+    var token = "8931922787:AAGzA5nLqX5qKug6orSe0J8HzzZm1dkk9D4";
+    var chatId = "5475216446";
+    var alertSent = localStorage.getItem("alertSent");
+
+    if (daysLeft <= 4 && !alertSent) {
+        var msg = "😊 تمكن من منخفض! المتابعة!";
+        
+        fetch("https://api.telegram.org/bot" + token + "/sendMessage", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                chat_id: chatId,
+                text: msg
+            })
+        })
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            console.log("✅ تم الإرسال:", data);
+            localStorage.setItem("alertSent", "true");
+        })
+        .catch(function(error) {
+            console.error("❌ فشل الإرسال:", error);
+        });
+    } else if (daysLeft > 4) {
+        localStorage.removeItem("alertSent");
+    }
+    }  
 </script>
 </body>
 </html>
